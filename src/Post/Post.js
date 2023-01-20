@@ -1,4 +1,4 @@
-const User = ({post, setPostDetails}) => {
+const Post = ({post, setPostDetails}) => {
     let {id, userId, title, body} = post
 
     return (
@@ -13,5 +13,5 @@ const User = ({post, setPostDetails}) => {
 }
 
 export{
-    User
+    Post
 }
