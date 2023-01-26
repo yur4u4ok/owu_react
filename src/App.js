@@ -1,25 +1,34 @@
-import logo from './logo.svg';
 import './App.css';
+import {CarForm, Cars} from "./components";
+import {useEffect, useState} from "react";
+import {carService} from "./services";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [cars, setCars] = useState([])
+    const [updatedCar, setUpdateCar] = useState(null)
+    const [deleteCar, setDeleteCar] = useState(null)
+
+    if(deleteCar){
+        for(let i=0; i<cars.length; i++){
+            if(deleteCar.id === cars[i].id){
+                cars.splice(i,1)
+                setCars([...cars])
+                carService.deleteById(deleteCar.id)
+            }
+        }
+    }
+
+    useEffect(() => {
+        carService.getAll().then(value => value.data).then(value => setCars([...value]))
+    }, [])
+
+    return (
+        <div className="App">
+            <CarForm setCars={setCars} updatedCar={updatedCar}/>
+            <hr/>
+            <Cars cars={cars} setUpdateCar={setUpdateCar} setDeleteCar={setDeleteCar}/>
+        </div>
+    );
 }
 
 export default App;

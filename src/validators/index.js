@@ -1,0 +1,1 @@
+export {carValidator} from "./carValidator"
