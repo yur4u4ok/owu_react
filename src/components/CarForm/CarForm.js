@@ -33,7 +33,6 @@ const CarForm = ({setCars, updatedCar}) => {
         }
     }
 
-
     return (
         // <form onSubmit={handleSubmit(submit)}>
         //     <input type="text" placeholder={'brand'} {...register('brand', {
