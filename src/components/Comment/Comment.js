@@ -10,7 +10,7 @@ const Comment = ({comment}) => {
             <div>name: {name}</div>
             <div>email: {email}</div>
             <div>body: {body}</div>
-            <Link to={'/comments/'+postId} state={comment}>View post</Link>
+            <Link to={'/comments/'+postId}>View post</Link>
         </div>
     )
 }
