@@ -1,6 +1,6 @@
 import './App.css';
 import {Header} from "./layouts";
-import {Route, Routes} from "react-router-dom";
+import {Navigate, Route, Routes} from "react-router-dom";
 import {AlbumsPage, CommentDetail, CommentsPage, HomePage, TodosPage} from "./components";
 
 
@@ -10,7 +10,8 @@ function App() {
         <Header/>
 
         <Routes>
-            <Route path={'/'} element={<HomePage/>}/>
+            <Route index element={<Navigate to={'home'}/>}/>
+            <Route path={'home'} element={<HomePage/>}/>
             <Route path={'albums'} element={<AlbumsPage/>}/>
             <Route path={'todos'} element={<TodosPage/>}/>
             <Route path={'comments'} element={<CommentsPage/>}>
